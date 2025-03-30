@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import ProductList from '../components/catalog/ProductList.jsx'
 
 const Home = () => {
     return (
@@ -12,6 +13,9 @@ const Home = () => {
             <Link to="/auth/login">
             <button>Inicia Sesión</button>
             </Link>
+
+        <ProductList />
+            
         </div>
     );
 };

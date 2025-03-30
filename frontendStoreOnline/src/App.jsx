@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import AuthPage from "./pages/AuthPage";
-import Home from "./pages/Home";
+import AuthPage from "./pages/AuthPage.jsx";
+import Home from "./pages/Home.jsx";
 
 function App () {
   return (
