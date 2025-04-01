@@ -1,10 +1,12 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import NavBar from '../components/common/NavBar.jsx';
 import ProductList from '../components/catalog/ProductList.jsx'
 
 const Home = () => {
     return (
         <div>
+            <NavBar />
             <h1>Bienvenido a StoreOnline</h1>
             <p>Explora nuestros productos y ofertas</p>
             <Link to="/auth/register">

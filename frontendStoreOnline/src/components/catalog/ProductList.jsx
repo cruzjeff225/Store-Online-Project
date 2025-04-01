@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { getProducts, filterProducts } from "../../api/productAPI.js";
+import { addToCart } from "../../api/cartAPI.js";
 import SearchBar from "./SearchBar.jsx";
 
 const ProductList = () => {
     const[products, setProducts] = useState([]);
     const [error, setError] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('');
+    const [cartMessage, setCartMessage] = useState('');
 
     useEffect(() => {
         const loadProducts = async () => {
@@ -21,6 +23,16 @@ const ProductList = () => {
         };
         loadProducts();
     }, []);
+
+    const handleAddToCart = async (idProducto) => {
+        const idUsuario = 1;
+        const cantidadProducto = 1;
+
+        const response = await addToCart(idUsuario, idProducto, cantidadProducto);
+        setCartMessage(response.message);
+
+        setTimeout(() => setCartMessage(''), 3000);
+    };
 
     const handleFilter = async (category) => {
         if(category) {
@@ -56,6 +68,9 @@ const ProductList = () => {
                    <h3>Precio: ${product.precio}</h3> 
                    <h3>Unidades disponibles: {product.stock}</h3> 
                    <h3>Categoría: {product.categoriaProducto}</h3> 
+                   <button onClick={() => handleAddToCart(product.idProducto)}>
+                    Agregar al Carrito
+                   </button>
                    </li> 
                 ))}
             </ul>

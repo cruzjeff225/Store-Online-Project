@@ -4,6 +4,7 @@ const cors = require("cors");
 const connection = require('./config/database.js');
 const userRoutes = require('./routes/userRoutes');
 const productRoutes = require('./routes/productRoutes.js')
+const cartRoutes = require('./routes/cartRoutes.js')
 
 const app = express();
 
@@ -14,6 +15,8 @@ app.use(cors());
 app.use('/api', userRoutes)
 //Rutas para productos
 app.use('/api', productRoutes)
+//Rutas para carrito
+app.use('/api', cartRoutes)
 //Ruta principal
 app.get('/', (req, res) => {
     res.send('Bienvenido a StoreOnline Backend');
