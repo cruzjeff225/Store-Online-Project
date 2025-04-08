@@ -21,7 +21,13 @@ const User = {
         const query = 'SELECT * FROM Usuarios WHERE idUsuario = ?';
         const [rows] = await connection.promise().query(query, [id]);
         return rows[0];
+    },
+
+    setEmailPreference: async (idUsuario, recibirCorreos) => {
+        const query = 'UPDATE Usuarios SET recibirCorreos = ? WHERE idUsuario = ?';
+        const [result] = await connection.promise().query(query, [recibirCorreos, idUsuario]);
+        return result;
     }
-}
+};
 
 module.exports = User; 
