@@ -1,0 +1,20 @@
+{
+  "name": "store-online-project",
+  "version": "1.0.0",
+  "description": "👩‍💻 Acá te explico cómo colaborar de manera efectiva en este repo. Paso a paso a continuación:\r ## ⚡Flujo de Trabajo\r ### 🛠️ 1. Clonar y preparar el entorno:\r Abre tu terminal y ejecuta:\r ```bash\r   git clone <URL_DEL_REPO>``\r   cd nombre_repo\r ```\r Esto descarga el proyecto en tu máquina localmente.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cruzjeff225/Store-Online-Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cruzjeff225/Store-Online-Project/issues"
+  },
+  "homepage": "https://github.com/cruzjeff225/Store-Online-Project#readme"
+}
