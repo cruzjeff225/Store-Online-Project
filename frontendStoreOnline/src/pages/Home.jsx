@@ -15,6 +15,9 @@ const Home = () => {
             <Link to="/auth/login">
             <button>Inicia Sesión</button>
             </Link>
+            <Link to="/dashboardNotification">
+            <button>Mis Notificaciones</button>
+            </Link>
 
         <ProductList />
             
