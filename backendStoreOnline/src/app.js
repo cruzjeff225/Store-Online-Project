@@ -7,6 +7,7 @@ const productRoutes = require('./routes/productRoutes.js')
 const cartRoutes = require('./routes/cartRoutes.js')
 const orderRoutes = require('./routes/orderRoutes.js');
 const notificationRoutes = require('./routes/notificationRoutes.js');
+const ordersRoutes = require('./routes/ordersRoutes.js');
 
 const app = express();
 
@@ -23,6 +24,10 @@ app.use('/api', cartRoutes)
 app.use('/api/orders', orderRoutes)
 //Ruta para notificaciones
 app.use('/api/notifications', notificationRoutes)
+//Ruta para ordenes de usuario
+app.use('/api/orders', ordersRoutes); // ejemplo: /api/orders/crear, /api/orders/cancelar
+app.use('/api/admin/orders', ordersRoutes); // ahora AdminOrders.jsx debe llamar a /api/admin/orders
+
 //Ruta principal
 app.get('/', (req, res) => {
     res.send('Bienvenido a StoreOnline Backend');
