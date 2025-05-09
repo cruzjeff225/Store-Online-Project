@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useParams } from 'react-router-dom';
 import RegisterForm from '../components/auth/RegisterForm';
+import LoginForm from '../components/auth/LoginForm';
 
 const AuthPage = () => {
     const {action} = useParams();
@@ -8,6 +9,7 @@ const AuthPage = () => {
     return (
         <div>
             {action === 'register' && <RegisterForm />}
+            {action === 'login' && <LoginForm />}
             <Link to="/">
             <button>Volver a la página principal</button>
             </Link>
@@ -16,4 +18,3 @@ const AuthPage = () => {
 };
 
 export default AuthPage;
-

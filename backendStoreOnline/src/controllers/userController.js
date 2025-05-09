@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { sendWelcomeMail } = require('../config/mail.js');
 
-
+//Controlador para manejar las operaciones relacionadas con los usuarios
 const UserController = {
     registerUser: async (req, res) => {
         console.log('Recibiendo solicitud de registros:', req.body);
@@ -39,6 +39,44 @@ const UserController = {
         }
     },
 
+    // Método para iniciar sesión
+    loginUser: async (req, res) => {
+        const { correo, contrasena } = req.body;
+
+        try {
+            // Verificar si el usuario existe
+            const user = await User.getUserByMail(correo);
+            if (!user) {
+                return res.status(404).json({ message: 'Usuario no encontrado' });
+            }
+
+            // Comparar la contraseña ingresada con la almacenada
+            const isPasswordValid = await bcrypt.compare(contrasena, user.contrasena);
+            if (!isPasswordValid) {
+                return res.status(401).json({ message: 'Credenciales inválidas' });
+            }
+
+            // Generar token JWT
+            const token = jwt.sign(
+                { idUsuario: user.idUsuario, correo: user.correo },
+                process.env.JWT_SECRET,
+                { expiresIn: '1h' }
+            );
+
+            res.json({
+                success: true,
+                message: 'Inicio de sesión exitoso',
+                token
+            });
+        } catch (error) {
+            console.error('Error en loginUser:', error);
+            res.status(500).json({
+                message: 'Error al iniciar sesión',
+                error: error.message
+            });
+        }
+    },
+    
     getUserById: async (req, res) => {
         try {
             const { idUsuario } = req.params;

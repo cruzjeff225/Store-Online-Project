@@ -14,7 +14,7 @@ app.use(express.json())
 app.use(cors());
 
 //Rutas para usuarios
-app.use('/api/users', userRoutes)
+app.use('/api', userRoutes)
 //Rutas para productos
 app.use('/api', productRoutes)
 //Rutas para carrito
